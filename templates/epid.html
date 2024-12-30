@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    EPID QA
+{% endblock %}
+
+{% block main %}
+    <h1>EPID QA</h1>
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Positioning
+            </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+
+                    <div class="container">
+                        <form action="/epid_input_img" method="post" enctype=multipart/form-data>
+                            <div class="mb-3">
+                                <input autofocus class="form-control mx-auto w-auto" name="positioning_input_files" type="file" accept=".dcm" multiple translate="no">
+                            </div>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </form>
+                    </div>
+
+
+                    <div class="container plot_container">
+
+                        <div class="container">
+                            <form action="/epid" method="get">
+                                <select class="form-select" aria-label="Default select example" name="plot_type">
+                                    <!--<option value="">--Please choose an option--</option>-->
+                                    <option value="reference">EPID reference position</option>
+                                    <option value="sid">EPID position with SID variation</option>
+                                    <!-- <option value="g_rotation">EPID position with gantry rotation  (under construction)</option> -->
+                                </select>
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </form>
+                        </div>
+                        {% if buf_fig %}
+                            <div class="container">
+                                <figure class="figure" id="figure_epid_positioning">
+                                    <img src="data:image/png;base64,{{ buf_fig }}" class="figure-img img-fluid rounded" alt="EPID position over time.">
+                                    <figcaption class="figure-caption">EPID position over time.</figcaption>
+                                </figure>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Linearity (Under construction)
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form action="/epid" method="post">
+                        <div class="mb-3">
+                            <input autofocus class="form-control mx-auto w-auto" name="linearity_input_file" type="file">
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Uniformity (Under construction)
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form action="/epid" method="post">
+                        <div class="mb-3"></div>
+                            <input autofocus class="form-control mx-auto w-auto" name="uniformity_input_file" type="file">
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        -->
+    </div>
+
+
+{% endblock %}
+

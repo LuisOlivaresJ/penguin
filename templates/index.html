@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p>
+            Penguin is a web application used to track the position reproducibility
+            of an image plane detector (or electronic portal
+            imaging device, EPID) used to acquire x-ray images with a linear
+            accelerator (LINAC).
+        </p>
+        <p>
+            It is intended for medical physicists who want
+            to follow <a href="https://aapm.onlinelibrary.wiley.com/doi/10.1002/mp.16536">
+            AAPM TG 307</a> recommendations about tests to ensure the EPID will function
+            accurately as a dosimeter.
+        </p>
+
+
+
+        <div class="alert alert-primary" role="alert">
+            Note: This app is the result of my final project from the <a href="https://cs50.harvard.edu/x/2024/">Harvard University CS50x</a> course.
+        </div>
+    </div>
+
+{% endblock %}
